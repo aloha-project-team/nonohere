@@ -11,7 +11,9 @@
 </head>
 <body>
     <header>
-        <img id='logo' src='{% static "img/nonohere_logo.png" %}' alt='nonohere_logo'>
+        <a href = "{% url 'home' %}">
+            <img id='logo' src='{% static "img/nonohere_logo.png" %}' alt='nonohere_logo'>
+        </a>
         <nav>
             <input type="radio" name="noyes" id='no' onclick="changenoyes()" checked/>
             <label for='no'>여기안돼.</label>
@@ -20,6 +22,26 @@
             <span>검색</span>
         </nav>
     </header>
+    <div class="login">
+        {% if user.is_authenticated %}
+        <div>
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                {{ user.get_username }} 님 환영합니다.
+                <button type = submit>LOGOUT</button>
+            </form>
+        </div>
+        {% else %}
+        <div>
+            <a href="{% url 'login' %}">
+                <button type="button">LOGIN</button>
+            </a>
+            <a href="{% url 'sign_up' %}">
+                <button type="button">SIGN - UP</button>
+            </a>
+        </div>
+    {% endif %}
+    </div>
     <div id='main_container'>    
     {% block content %}
     {% endblock %}

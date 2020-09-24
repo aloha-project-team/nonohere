@@ -21,4 +21,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('detail/<int:store_pk>', views.detail, name='detail'),
+    path('sign-up/', views.sign_up, name='sign_up'),
+    path('login/', views.login, name = 'login'),
+    path('logout/', views.logout, name = 'logout'),
+    path('<int:store_id>/like/', views.like, name='like'),
 ]

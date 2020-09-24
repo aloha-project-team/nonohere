@@ -23,4 +23,22 @@
         </div>
         {% endfor %}
     </div>
+    <div>
+        <div>
+            좋아요 수 : {{ store.liked_users.count }}
+        </div>
+        {% if user.is_authenticated %}
+            {% if user in store.liked_users.all %}
+                <form action="{% url 'like' store.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">LIKE</button>
+                </form>
+            {% else %}
+                <form action="{% url 'like' store.pk %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit" >LIKE</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    </div>
 {% endblock %}
