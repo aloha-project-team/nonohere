@@ -34,8 +34,9 @@
         {% endfor %}
     </div>
     <div>
+        <h2>이 장소를 가려는 사람들</h2>
         <div>
-            좋아요 수 : {{ store.liked_users.count }}
+            (찜)좋아요 수 : {{ store.liked_users.count }}
         </div>
         {% if user.is_authenticated %}
             {% if user in store.liked_users.all %}

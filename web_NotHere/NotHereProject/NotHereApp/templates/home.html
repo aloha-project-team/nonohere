@@ -12,11 +12,11 @@
     <form action="{% url 'home' %}" method="POST" name="option">
         {% csrf_token %}
         <h3>상세조건</h3>
-        (확인용) <br>
         업종 : {{category}} <br>
         지역 : {{region}} <br>
+        <br>
         <div class='space_around_ct'>
-            <button id='option_bt' type="submit">초기화</button>
+            <button id='option_bt' type="reset">초기화</button>
             <button id='option_bt' type="submit">적용</button>
         </div>
 
@@ -88,9 +88,9 @@
                     </div>
                 </div>
             </div>
-            <br>
             {% endfor %}
         {% endfor %}
+        {% comment %} <img id='model' src='{% static "img/nonohere_model_white_bg.png" %}' alt='nonohere_model'> {% endcomment %}
     </div>
     <div class="here" id="yes_div" style="display: none;">
         <h2>여긴어때?</h2>

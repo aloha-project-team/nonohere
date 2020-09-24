@@ -58,7 +58,8 @@ def detail(request, store_pk):
     context={}
     store = StoreDB.objects.get(pk=store_pk)
     context['store'] = store
-    reviews = ReviewDB.objects.filter(store_id = store_pk)
+    print(store.name)
+    reviews = ReviewDB.objects.filter(store_name = store.name)
     context['reviews'] = reviews
 
     context['graph'] = [10, 20, 30, 40, 50, 60, 70]
