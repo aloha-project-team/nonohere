@@ -29,6 +29,10 @@ div{
     justify-content: flex-start;
 }
 
+#model{
+    position: fixed;
+}
+
 .rank{
     display: flex;
     flex-direction: column;
@@ -41,7 +45,6 @@ div{
     display: flex;
     justify-content: space-around;
 }
-
 
 #option_bt{
     width: 43%;

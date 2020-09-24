@@ -119,3 +119,16 @@ input[type=radio]{
     color: rgb(148, 146, 147);
     margin-bottom: 70px;
 }
+
+.log_bt{
+    width: 100px;
+    height: 30px;
+    color: white;
+    background-color: rgb(239, 48, 63);
+    font-family: 'S-CoreDream';
+    font-weight: 300;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+}
