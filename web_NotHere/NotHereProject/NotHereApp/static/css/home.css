@@ -26,8 +26,15 @@ div{
     border: rgb(230, 230, 230) 1px solid;
     padding: 15px;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-start;
+}
 
+.rank{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 25px;
+    text-align: center;
 }
 
 .space_around_ct{
@@ -54,9 +61,19 @@ input[type=checkbox]{
     height: 20px;
     line-height: 20px;
 }
-
+h1{
+    margin: 0;
+}
+h2{
+    font-family: 'yg-jalnan';
+    margin: 0;
+    color: rgb(239, 48, 63);
+}
 h3{
     font-weight: 500;
+    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 h4{
     font-weight: 400;
