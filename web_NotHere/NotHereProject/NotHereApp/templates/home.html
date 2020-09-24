@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>여기안돼!</title>
+</head>
+<body>
+    <h1>여기안돼!(home)</h1>
+    <div>
+        <form action="{% url 'home' %}" method="POST" name="option">
+            {% csrf_token %}
+            업종별(예시) : 
+            <select name="category" id="" >
+                <option value="전체">전체</option>
+                <option value="업종1">업종1</option>
+                <option value="업종2">업종2</option>
+                <option value="업종3">업종3</option>
+            </select>
+            지역별(예시) : 
+            <select name="region" id="">
+                <option value="전체">전체</option>
+                <option value="서울">서울</option>
+                <option value="부산">부산</option>
+                <option value="광주">광주</option>
+                <option value="대구">대구</option>
+                <option value="인천">인천</option>
+                <option value="울산">울산</option>
+                <option value="대전">대전</option>
+            </select>
+            <button type="submit">적용</button>
+        </form>
+    </div>
+    <div class="radio">
+        <input type="radio" name="noyes" id='no' onclick="changenoyes()" checked/>
+        <label for="no">여기안돼!</label>
+        <input type="radio" name="noyes" id='here' onclick="changenoyes()" />
+        <label for="yes">여긴어때?</label>
+    </div>
+    <div class="stores">
+        <div class="here" id="no_div">
+            여기안돼!
+            {% for store in stores %}
+            <a href="{% url 'detail' store.pk %}">
+            <div>
+                {{store.name}} 별점: {{store.score}} 리뷰수: 
+                <script>
+                    document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                </script> 
+            </div>
+            </a>
+            <br>
+            {% endfor %}
+        </div>
+        <div class="here" id="yes_div" style="display: none;">
+            여긴어때?
+            {% for store in stores %}
+            <a href="{% url 'detail' store.pk %}">
+            <div>
+                {{store.name}} 별점: {{store.score}} 리뷰수: 
+                <script>
+                    document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                </script> 
+            </div>
+            </a>
+            <br>
+            {% endfor %}
+        </div>
+        
+    </div>
+    <script src="/static/js/home.js"></script>
+    <script>
+        document.option.category.value="{{category}}";
+        document.option.region.value="{{region}}";
+    </script>
+</body>
+</html>
