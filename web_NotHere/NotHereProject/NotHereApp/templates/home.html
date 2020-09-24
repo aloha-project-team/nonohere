@@ -12,6 +12,9 @@
     <form action="{% url 'home' %}" method="POST" name="option">
         {% csrf_token %}
         <h3>상세조건</h3>
+            (확인용) <br>
+         업종 : {{category}} <br>
+         지역 : {{region}} <br>
         <div class='space_around_ct'>
             <button id='option_bt' type="submit">초기화</button>
             <button id='option_bt' type="submit">적용</button>
@@ -19,13 +22,21 @@
 
         <h4>업종별(예시)</h4>
         <input type="checkbox" name="category[]" value="전체"id="전체_cate">
-        <label for="전체_cate">전체</label><br>
-        <input type="checkbox" name="category[]" value="업종1"id="업종1">
-        <label for="업종1">업종1</label><br>
-        <input type="checkbox" name="category[]" value="업종2"id="업종2">
-        <label for="업종2">업종2</label><br>
-        <input type="checkbox" name="category[]" value="업종3"id="업종3">
-        <label for="업종3">업종3</label><br>
+        <label for="전체_cate">전체</label>
+        <input type="checkbox" name="category[]" value="식당"id="식당">
+        <label for="식당">식당</label>
+        <input type="checkbox" name="category[]" value="카페"id="카페">
+        <label for="카페">카페</label>
+        <input type="checkbox" name="category[]" value="영화관"id="영화관">
+        <label for="영화관">영화관</label>
+        <input type="checkbox" name="category[]" value="공원"id="공원">
+        <label for="공원">공원</label>
+        <input type="checkbox" name="category[]" value="액티비티"id="액티비티">
+        <label for="액티비티">액티비티</label>
+        <input type="checkbox" name="category[]" value="숙소"id="숙소">
+        <label for="숙소">숙소</label>
+        <input type="checkbox" name="category[]" value="마트"id="마트">
+        <label for="마트">마트</label>
         
         <h4>지역별(예시)</h4>
         <input type="checkbox" name="region[]" value="전체"id="전체_re">
@@ -51,42 +62,46 @@
 <div class="stores">
     <div class="here" id="no_div">
         <h3>여기안돼.</h3>
-        {% for store in stores %}
-        <a href="{% url 'detail' store.pk %}">
-        <div class="store">
-            <img src="" alt="업종별 아이콘" width="80" hight="80">
-            <h3>
-            {{store.name}}
-            </h3>
-            <div>
-                별점: {{store.score}} 리뷰수:
-                <script>
-                    document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                </script> 
+        {% for stores in store_list %}
+            {% for store in stores %}
+            <a href="{% url 'detail' store.pk %}">
+            <div class="store">
+                <img src="" alt="업종별 아이콘" width="80" hight="80">
+                <h3>
+                {{store.name}}
+                </h3>
+                <div>
+                    별점: {{store.score}} 리뷰수:
+                    <script>
+                        document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                    </script> 
+                </div>
             </div>
-        </div>
-        </a>
-        <br>
+            </a>
+            <br>
+            {% endfor %}
         {% endfor %}
     </div>
     <div class="here" id="yes_div" style="display: none;">
         <h3>여긴어때?</h3>
-        {% for store in stores %}
-        <a href="{% url 'detail' store.pk %}">
-        <div class="store">
-            <img src="" alt="업종별 아이콘" width="80" hight="80">
-            <h3>
-                {{store.name}}
-            </h3>
-            <div>
-                별점: {{store.score}} 리뷰수:
-                <script>
-                    document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                </script>
+        {% for stores in store_list %}
+            {% for store in stores %}
+            <a href="{% url 'detail' store.pk %}">
+            <div class="store">
+                <img src="" alt="업종별 아이콘" width="80" hight="80">
+                <h3>
+                    {{store.name}}
+                </h3>
+                <div>
+                    별점: {{store.score}} 리뷰수:
+                    <script>
+                        document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                    </script>
+                </div>
             </div>
-        </div>
-        </a>
-        <br>
+            </a>
+            <br>
+            {% endfor %}
         {% endfor %}
     </div>
 </div>
