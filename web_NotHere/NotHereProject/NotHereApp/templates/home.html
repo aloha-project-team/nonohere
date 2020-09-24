@@ -12,9 +12,9 @@
     <form action="{% url 'home' %}" method="POST" name="option">
         {% csrf_token %}
         <h3>상세조건</h3>
-            (확인용) <br>
-         업종 : {{category}} <br>
-         지역 : {{region}} <br>
+        (확인용) <br>
+        업종 : {{category}} <br>
+        지역 : {{region}} <br>
         <div class='space_around_ct'>
             <button id='option_bt' type="submit">초기화</button>
             <button id='option_bt' type="submit">적용</button>
@@ -25,14 +25,17 @@
         <label for="전체_cate">전체</label>
         <input type="checkbox" name="category[]" value="식당"id="식당">
         <label for="식당">식당</label>
+        <br>
         <input type="checkbox" name="category[]" value="카페"id="카페">
         <label for="카페">카페</label>
         <input type="checkbox" name="category[]" value="영화관"id="영화관">
         <label for="영화관">영화관</label>
+        <br>
         <input type="checkbox" name="category[]" value="공원"id="공원">
         <label for="공원">공원</label>
         <input type="checkbox" name="category[]" value="액티비티"id="액티비티">
         <label for="액티비티">액티비티</label>
+        <br>
         <input type="checkbox" name="category[]" value="숙소"id="숙소">
         <label for="숙소">숙소</label>
         <input type="checkbox" name="category[]" value="마트"id="마트">
@@ -61,45 +64,59 @@
 <!-- 데이터가 보이는 부분 -->
 <div class="stores">
     <div class="here" id="no_div">
-        <h3>여기안돼.</h3>
+        <h2>여기안돼.</h2>
+        <h3>평점 대비 사람이 너무 몰려요</h3>
         {% for stores in store_list %}
             {% for store in stores %}
-            <a href="{% url 'detail' store.pk %}">
             <div class="store">
-                <img src="" alt="업종별 아이콘" width="80" hight="80">
-                <h3>
-                {{store.name}}
-                </h3>
+                <div class='rank'>
+                    <h3>RANK</h3>
+                    <h1>1</h1>
+                </div>
                 <div>
-                    별점: {{store.score}} 리뷰수:
-                    <script>
-                        document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                    </script> 
+                    <img src="" alt="업종별 아이콘" width="80" hight="80">
+                    <a href="{% url 'detail' store.pk %}">
+                    <h3>
+                    {{store.name}}
+                    </h3>
+                    </a>
+                    <div>
+                        별점: {{store.score}} 리뷰수:
+                        <script>
+                            document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                        </script> 
+                    </div>
                 </div>
             </div>
-            </a>
             <br>
             {% endfor %}
         {% endfor %}
     </div>
     <div class="here" id="yes_div" style="display: none;">
-        <h3>여긴어때?</h3>
+        <h2>여긴어때?</h2>
+        <h3>최근 방문자가 적지만 좋은 곳을 추천해요</h3>
         {% for stores in store_list %}
             {% for store in stores %}
-            <a href="{% url 'detail' store.pk %}">
             <div class="store">
-                <img src="" alt="업종별 아이콘" width="80" hight="80">
-                <h3>
-                    {{store.name}}
-                </h3>
+                <div class='rank'>
+                    <h3>RANK</h3>
+                    <h1>1</h1>
+                </div>
                 <div>
-                    별점: {{store.score}} 리뷰수:
-                    <script>
-                        document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                    </script>
+                    <img src="" alt="업종별 아이콘" width="80" hight="80">
+                    <a href="{% url 'detail' store.pk %}">
+                    <h3>
+                    {{store.name}}
+                    </h3>
+                    </a>
+                    <div>
+                        별점: {{store.score}} 리뷰수:
+                        <script>
+                            document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                        </script> 
+                    </div>
                 </div>
             </div>
-            </a>
             <br>
             {% endfor %}
         {% endfor %}

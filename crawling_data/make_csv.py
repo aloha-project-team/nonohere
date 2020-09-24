@@ -2,12 +2,16 @@ from bs4 import BeautifulSoup
 import requests
 import json
 import csv
+import pandas as pd
 
 from selenium import webdriver
 import time
 # id / 방문지 / 방문자 리뷰 수 / 블로그 리뷰수 / 전화번호 / 주소 / 운영시간 및 추가 정보 / 링크
 # 방문지 / 리뷰아이디(평점 / 글)
 
+df = pd.read_csv("./place.csv")
+
+# print(df["place"])
 
 
 with open('review.csv', 'w', newline='', encoding='utf-8') as csvfile:
@@ -23,9 +27,6 @@ with open('etc.csv', 'w', newline='', encoding='utf-8') as csvfile:
     csvwriter.writerow(['place', 'phone', 'address', 'hour', 'url'])
 
 
-search = ["롯데월드", "에버랜드", "여의도 한강공원", "연희 38 애비뉴"]
-# search = "롯데월드"
-
 def make_url(search):
 
     # url = f"https://map.naver.com/v5/search/{search}"
@@ -40,7 +41,11 @@ def make_url(search):
     if len(place_url) > 100:
         # print("잘못됨")
         soup = BeautifulSoup(response.text, "html.parser")
-        place_url = soup.find("a", class_="api_more_theme")["href"].split("?c=")[0].split("/")[-1]
+        try:
+            place_url = soup.find("a", class_="api_more_theme")["href"].split("?c=")[0].split("/")[-1]
+        except :
+            pass
+        
 
 
     return place_url
@@ -64,6 +69,8 @@ def place_info(place_url, search):
     review = soup.find("div", class_="_1kUrA")
 
     reviews = []
+    
+    rating = 0
 
     for line in review.select("span"):
         if line.select_one("a") == None:
@@ -158,13 +165,18 @@ def crawling_review(place_url , search):
 
     return info_list
 
-for s in search:
-    place_url = make_url(search)
-    print(place_url)
-    print(place_info(place_url, s))
-    print(etc(place_url, s))
-    print(crawling_review(place_url, s))
+for s in df["place"]:
+    place_url = make_url(s)
+    try:
+        print(place_url)
+        print(place_info(place_url, s))
+        print(etc(place_url, s))
+        print(crawling_review(place_url, s))
 
+    except:
+        pass
+        
+    
 
 
 

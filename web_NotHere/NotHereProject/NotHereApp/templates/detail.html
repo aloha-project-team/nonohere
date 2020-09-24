@@ -2,19 +2,20 @@
 {% load static %}
 
 {% block style %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
 {% endblock %}
-
 {% block content %}
-<h1>상세페이지칸</h1>
+<div>
     <div>
         <h2>{{store.name}}</h2>
-        <a href="{{store.naver_link}}"> 바로가기</a> <br>
+        <a href="{{store.naver_link}}"> 바로가기</a>
+        <br>
         별점 : {{store.score}}<br>
         전화번호 : {{store.call}} <br>
         주소 : {{store.address}} <br>
         운영시간 : {{store.operation}} <br>
     </div>
-    <div>
+    <div id='review'>
         <h2>최근 리뷰</h2>
         {% for review in reviews %}
         <div>
