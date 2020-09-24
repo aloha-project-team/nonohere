@@ -12,9 +12,9 @@
     <form action="{% url 'home' %}" method="POST" name="option">
         {% csrf_token %}
         <h3>상세조건</h3>
-            (확인용) <br>
-         업종 : {{category}} <br>
-         지역 : {{region}} <br>
+        (확인용) <br>
+        업종 : {{category}} <br>
+        지역 : {{region}} <br>
         <div class='space_around_ct'>
             <button id='option_bt' type="submit">초기화</button>
             <button id='option_bt' type="submit">적용</button>
@@ -25,14 +25,17 @@
         <label for="전체_cate">전체</label>
         <input type="checkbox" name="category[]" value="식당"id="식당">
         <label for="식당">식당</label>
+        <br>
         <input type="checkbox" name="category[]" value="카페"id="카페">
         <label for="카페">카페</label>
         <input type="checkbox" name="category[]" value="영화관"id="영화관">
         <label for="영화관">영화관</label>
+        <br>
         <input type="checkbox" name="category[]" value="공원"id="공원">
         <label for="공원">공원</label>
         <input type="checkbox" name="category[]" value="액티비티"id="액티비티">
         <label for="액티비티">액티비티</label>
+        <br>
         <input type="checkbox" name="category[]" value="숙소"id="숙소">
         <label for="숙소">숙소</label>
         <input type="checkbox" name="category[]" value="마트"id="마트">
