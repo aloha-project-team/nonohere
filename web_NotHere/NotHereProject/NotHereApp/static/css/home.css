@@ -103,7 +103,8 @@ header {
 }
 
 #main_container{
-    background-color: white;
+	background-color: white;
+	display: flex;
 }
 
 input[type=radio]{

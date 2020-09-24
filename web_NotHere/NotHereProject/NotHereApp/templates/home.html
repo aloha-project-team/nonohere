@@ -1,110 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <title>여기안돼!</title>
-</head>
-<body>
-    {% comment %} 상단 메뉴바 {% endcomment %}
-    <header>
-        <img id='logo' src='{% static "img/nonohere_logo.png" %}' alt='nonohere_logo'>
-        <nav>
-            <input type="radio" name="noyes" id='no' onclick="changenoyes()" checked/>
-            <label for='no'>여기안돼.</label>
-            <input type="radio" name="noyes" id='here' onclick="changenoyes()" />
-            <label for='here'>여긴어때?</label>
-            <span>검색</span>
-        </nav>
-    </header>
-    <div id='main_container'>
-        <div>
-            <form action="{% url 'home' %}" method="POST" name="option">
-                {% csrf_token %}
-                업종별(예시) : 
-                <select name="category" id="" >
-                    <option value="전체">전체</option>
-                    <option value="업종1">업종1</option>
-                    <option value="업종2">업종2</option>
-                    <option value="업종3">업종3</option>
-                </select>
-                지역별(예시) : 
-                <select name="region" id="">
-                    <option value="전체">전체</option>
-                    <option value="서울">서울</option>
-                    <option value="부산">부산</option>
-                    <option value="광주">광주</option>
-                    <option value="대구">대구</option>
-                    <option value="인천">인천</option>
-                    <option value="울산">울산</option>
-                    <option value="대전">대전</option>
-                </select>
-                <button type="submit">적용</button>
-            </form>
-        </div>
-        <div class="stores">
-            <div class="here" id="no_div">
-                여기안돼!
-                {% for store in stores %}
-                <a href="{% url 'detail' store.pk %}">
-                <div class="store">
-                    <img src="" alt="업종별 아이콘" width="80" hight="80">
-                    <div>
-                        {{store.name}} 별점: {{store.score}} 리뷰수: 
-                        <script>
-                            document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                        </script> 
-                    </div>
-                </div>
-                </a>
-                <br>
-                {% endfor %}
-            </div>
-            <div class="here" id="yes_div" style="display: none;">
-                여긴어때?
-                {% for store in stores %}
-                <a href="{% url 'detail' store.pk %}">
-                <div class="store">
-                    <img src="" alt="업종별 아이콘" width="80" hight="80">
-                    <div>
-                        {{store.name}} 별점: {{store.score}} 리뷰수: 
-                        <script>
-                            document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                        </script> 
-                    </div>
-                </div>
-                </a>
-                <br>
-                {% endfor %}
-            </div>
-            
-        </div>
-        <script src="/static/js/home.js"></script>
-        <script>
-            document.option.category.value="{{category}}";
-            document.option.region.value="{{region}}";
-        </script>
-    </div>
-    {% comment %} 하단 {% endcomment %}
-    <div id='bottom'>
-        회사소개 | 이용약관 | 개인정보처리방침 | 사업자 정보확인
-        <br>
-        <br>여기안돼 마케팅센터 | 액티비티 호스트센터 | HOTEL 여기안돼
-        <br>
-        <br>콘텐츠산업진흥법에의한 표시
-        <br>
-        <br>고객행복센터 1234-5678
-        <br>오전 9시 - 새벽 3시
-        <br>
-        <br>(주) 여기안돼컴퍼니
-        <br>주소 : 광주광역시 북구 첨단과기로 339 2층 광주인공지능사관학교
-        <br>공동 대표 | 김신영 이지원 천희국 최다인 | 사업자등록번호 123-45-67890
-        <br>전화번호 : 1234-5678
-        <br>전자우편주소 : likelion@likelion.org
-        <br>Copyright nonohere COMPANY Corp. All rights reserved.
-    <div>
-</body>
-</html>
+ {% endblock %}
+
+ {% block content %}
+ {% comment %} 상단 메뉴바 {% endcomment %}
+ <header>
+     <img id='logo' src='{% static "img/nonohere_logo.png" %}' alt='nonohere_logo'>
+     <nav>
+         <input type="radio" name="noyes" id='no' onclick="changenoyes()" checked/>
+         <label for='no'>여기안돼.</label>
+         <input type="radio" name="noyes" id='here' onclick="changenoyes()" />
+         <label for='here'>여긴어때?</label>
+         <span>검색</span>
+     </nav>
+ </header>
+ <div id='main_container'>
+     <div class ="option_container">
+         <form action="{% url 'home' %}" method="POST" name="option">
+             {% csrf_token %}
+             업종별(예시) : 
+             <input type="checkbox" name="category" value="전체"id="전체_cate">
+             <label for="전체_cate">전체</label>
+             <input type="checkbox" name="category" value="업종1"id="업종1">
+             <label for="업종1">업종1</label>
+             <input type="checkbox" name="category" value="업종2"id="업종2">
+             <label for="업종2">업종2</label>
+             <input type="checkbox" name="category" value="업종3"id="업종3">
+             <label for="업종3">업종3</label>
+             <br>
+             지역별(예시) : 
+             <input type="checkbox" name="region" value="전체"id="전체_re">
+             <label for="전체_re">전체</label>
+             <input type="checkbox" name="region" value="서울"id="서울">
+             <label for="서울">서울</label>
+             <input type="checkbox" name="region" value="부산"id="부산">
+             <label for="부산">부산</label>
+             <input type="checkbox" name="region" value="광주"id="광주">
+             <label for="광주">광주</label>
+             <input type="checkbox" name="region" value="대구"id="대구">
+             <label for="대구">대구</label>
+             <input type="checkbox" name="region" value="인천"id="인천">
+             <label for="인천">인천</label>
+             <input type="checkbox" name="region" value="울산"id="울산">
+             <label for="울산">울산</label>
+             <input type="checkbox" name="region" value="대구"id="대구">
+             <label for="대구">대구</label>
+             <button type="submit">적용</button>
+         </form>
+     </div>
+     <div class="stores">
+         <div class="here" id="no_div">
+             여기안돼!
+             {% for store in stores %}
+             <a href="{% url 'detail' store.pk %}">
+             <div class="store">
+                 <img src="" alt="업종별 아이콘" width="80" hight="80">
+                 <div>
+                     {{store.name}} 별점: {{store.score}} 리뷰수: 
+                     <script>
+                          document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                     </script> 
+                 </div>
+             </div>
+             </a>
+             <br>
+             {% endfor %}
+         </div>
+         <div class="here" id="yes_div" style="display: none;">
+             여긴어때?
+             {% for store in stores %}
+             <a href="{% url 'detail' store.pk %}">
+             <div class="store">
+                 <img src="" alt="업종별 아이콘" width="80" hight="80">
+                 <div>
+                     {{store.name}} 별점: {{store.score}} 리뷰수: 
+                     <script>
+                          document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                     </script> 
+                 </div>
+             </div>
+             </a>
+             <br>
+             {% endfor %}
+         </div>
+     </div>
+ </div>
+     <script src="/static/js/home.js"></script>
+     <script>
+         document.option.category.value="{{category}}";
+         document.option.region.value="{{region}}";
+     </script>
+ </div>
+ {% comment %} 하단 {% endcomment %}
+ <div id='bottom'>
+     회사소개 | 이용약관 | 개인정보처리방침 | 사업자 정보확인
+     <br>
+     <br>여기안돼 마케팅센터 | 액티비티 호스트센터 | HOTEL 여기안돼
+     <br>
+     <br>콘텐츠산업진흥법에의한 표시
+     <br>
+     <br>고객행복센터 1234-5678
+     <br>오전 9시 - 새벽 3시
+     <br>
+     <br>(주) 여기안돼컴퍼니
+     <br>주소 : 광주광역시 북구 첨단과기로 339 2층 광주인공지능사관학교
+     <br>공동 대표 | 김신영 이지원 천희국 최다인 | 사업자등록번호 123-45-67890
+     <br>전화번호 : 1234-5678
+     <br>전자우편주소 : likelion@likelion.org
+     <br>Copyright nonohere COMPANY Corp. All rights reserved.
+ <div>
+ {% endblock %}
