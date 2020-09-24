@@ -1,0 +1,119 @@
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal; font-style: normal;
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-1Thin.woff') format('woff'); 
+	font-weight: 100; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-2ExtraLight.woff') format('woff'); 
+	font-weight: 200; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff'); 
+	font-weight: 300; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff'); 
+	font-weight: 400; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff'); 
+	font-weight: 500; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff') format('woff'); 
+	font-weight: 600; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-7ExtraBold.woff') format('woff'); 
+	font-weight: 700; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff'); 
+	font-weight: 800; 
+	font-style: normal; 
+}
+@font-face { 
+	font-family: 'S-CoreDream'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-9Black.woff') format('woff'); 
+	font-weight: 900; 
+	font-style: normal; 
+}
+
+body{
+    margin: 0;
+    padding-top: 72px;
+    background-color: rgb(245, 245, 245);
+
+    font-family: 'S-CoreDream';
+    font-weight: 200;
+    letter-spacing: 1px;
+    line-height: 25px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    padding: 16px;
+    padding-left: 25%;
+    padding-right: 25%;
+    color: white;
+    background: rgb(239, 48, 63);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* font-family: 'yg-jalnan'; */
+    font-weight: 500;
+    font-size: 20px;
+}
+#logo{
+    height: 18px;
+}
+
+#main_container{
+	background-color: white;
+    display: flex;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+nav{
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type=radio]{
+    display: none;
+}
+
+#bottom{
+    padding-left: 25%;
+    padding-right: 25%;
+    font-size: 12px;
+    color: rgb(148, 146, 147);
+}

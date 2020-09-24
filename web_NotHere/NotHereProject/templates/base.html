@@ -10,7 +10,35 @@
     {% endblock %}
 </head>
 <body>
+    <header>
+        <img id='logo' src='{% static "img/nonohere_logo.png" %}' alt='nonohere_logo'>
+        <nav>
+            <input type="radio" name="noyes" id='no' onclick="changenoyes()" checked/>
+            <label for='no'>여기안돼.</label>
+            <input type="radio" name="noyes" id='here' onclick="changenoyes()" />
+            <label for='here'>여긴어때?</label>
+            <span>검색</span>
+        </nav>
+    </header>
+    <div id='main_container'>    
     {% block content %}
     {% endblock %}
+    </div>
+    {% comment %} 하단 {% endcomment %}
+    <div id='bottom'>
+        <br>
+        <br>
+        <br>회사소개 | 이용약관 | 개인정보처리방침 | 사업자 정보확인 | 여기안돼 마케팅센터 | 액티비티 호스트센터 | HOTEL 여기안돼 | 콘텐츠산업진흥법에의한 표시
+        <br>
+        <br>고객행복센터 1234-5678
+        <br>오전 9시 - 새벽 3시
+        <br>
+        <br>(주) 여기안돼컴퍼니
+        <br>주소 : 광주광역시 북구 첨단과기로 339 2층 광주인공지능사관학교
+        <br>공동 대표 | 김신영 이지원 천희국 최다인 | 사업자등록번호 123-45-67890
+        <br>전화번호 : 1234-5678
+        <br>전자우편주소 : likelion@likelion.org
+        <br>Copyright nonohere COMPANY Corp. All rights reserved.
+    <div>
 </body>
 </html>
