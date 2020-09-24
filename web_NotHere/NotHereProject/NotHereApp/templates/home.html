@@ -45,11 +45,14 @@
             여기안돼!
             {% for store in stores %}
             <a href="{% url 'detail' store.pk %}">
-            <div>
-                {{store.name}} 별점: {{store.score}} 리뷰수: 
-                <script>
-                    document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                </script> 
+            <div class="store">
+                <img src="" alt="업종별 아이콘" width="80" hight="80">
+                <div>
+                    {{store.name}} 별점: {{store.score}} 리뷰수: 
+                    <script>
+                        document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                    </script> 
+                </div>
             </div>
             </a>
             <br>
@@ -59,11 +62,14 @@
             여긴어때?
             {% for store in stores %}
             <a href="{% url 'detail' store.pk %}">
-            <div>
-                {{store.name}} 별점: {{store.score}} 리뷰수: 
-                <script>
-                    document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                </script> 
+            <div class="store">
+                <img src="" alt="업종별 아이콘" width="80" hight="80">
+                <div>
+                    {{store.name}} 별점: {{store.score}} 리뷰수: 
+                    <script>
+                        document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                    </script> 
+                </div>
             </div>
             </a>
             <br>

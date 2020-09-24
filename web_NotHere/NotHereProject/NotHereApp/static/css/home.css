@@ -4,3 +4,6 @@ div{
 .here{
     border: magenta 1px solid;
 }
+.store{
+    display: flex;
+}
