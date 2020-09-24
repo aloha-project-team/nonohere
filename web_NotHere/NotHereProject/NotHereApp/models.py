@@ -22,6 +22,8 @@ class ReviewDB(models.Model):
     review_id = models.IntegerField()
     store_id = models.ForeignKey(
         StoreDB, related_name='reivew', on_delete=models.CASCADE)
+    nickname = models.CharField(max_length=20, null=True)
+    date = models.CharField(max_length=20, null=True)
     score = models.CharField(max_length=10)
     text = models.TextField()
 

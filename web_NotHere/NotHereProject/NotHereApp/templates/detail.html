@@ -8,7 +8,7 @@
 <h1>상세페이지칸</h1>
     <div>
         <h2>{{store.name}}</h2>
-        <a href="{{store.naver_link}}">네이버 바로가기</a> <br>
+        <a href="{{store.naver_link}}"> 바로가기</a> <br>
         별점 : {{store.score}}<br>
         전화번호 : {{store.call}} <br>
         주소 : {{store.address}} <br>
@@ -18,7 +18,7 @@
         <h2>최근 리뷰</h2>
         {% for review in reviews %}
         <div>
-            {{review.review_id}} - 별점 : {{review.score}} <br>
+            {{review.nickname}} |{{review.date}}|  {{review.score}} <br>
             {{review.text}}
         </div>
         {% endfor %}
