@@ -61,6 +61,8 @@ def detail(request, store_pk):
     reviews = ReviewDB.objects.filter(store_id = store_pk)
     context['reviews'] = reviews
 
+    context['graph'] = [10, 20, 30, 40, 50, 60, 70]
+
     return render(request, 'detail.html', context)
 #################################################################
 def sign_up(request):
@@ -136,3 +138,8 @@ def like(request, store_id):
             pass
 
     return redirect('home')
+
+def test(request):
+    context={}
+    context['graph'] = [10, 20, 30, 40, 50, 60, 70]
+    return render(request, 'test.html', context)

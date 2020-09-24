@@ -3,6 +3,15 @@
 
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('#data').visualize({type:'bar'});
+            $('#data').visualize({type:'area', width:'400px'});
+
+        });
+    </script>
+
 {% endblock %}
 {% block content %}
 <div>
@@ -42,5 +51,32 @@
             {% endif %}
         {% endif %}
     </div>
+    <div>
+        <table id="data">
+            <caption>이용자수 예상</caption>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th>-5일</th>
+                    <th>-4일</th>
+                    <th>-3일</th>
+                    <th>-2일</th>
+                    <th>-1일</th>
+                    <th>0일</th>
+                    <th>+1일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>방문자수</th>
+                    {% for visit in graph %}
+                    <td>{{visit}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    
 </div>
 {% endblock %}
