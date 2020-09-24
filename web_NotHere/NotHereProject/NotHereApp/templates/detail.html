@@ -24,16 +24,6 @@
         주소 : {{store.address}} <br>
         운영시간 : {{store.operation}} <br>
     </div>
-    <div class='info'>
-        <h2>최근 리뷰</h2>
-        {% for review in reviews %}
-        <div>
-            {{review.nickname}} |{{review.date}}|  {{review.score}} <br>
-            {{review.text}}
-        </div>
-        {% endfor %}
-    </div>
-
     <div>
         <table id="data">
             <h2>이용자수 예상</h2>
@@ -79,6 +69,16 @@
                 </form>
             {% endif %}
         {% endif %}
+    </div>
+
+    <div class='info'>
+        <h2>최근 리뷰</h2>
+        {% for review in reviews %}
+        <div>
+            {{review.nickname}} |{{review.date}}|  {{review.score}} <br>
+            {{review.text}}
+        </div>
+        {% endfor %}
     </div>
     
 </div>
