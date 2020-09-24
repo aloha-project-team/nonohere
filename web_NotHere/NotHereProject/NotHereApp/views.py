@@ -53,7 +53,7 @@ def home(request):
             print("카테고리필터링")
 
         context['store_list'] = stores_result
-        context['sore_list2'] = stores_result2
+        context['store_list2'] = stores_result2
         print(stores_result)
 
     else:
