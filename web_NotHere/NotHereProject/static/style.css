@@ -99,6 +99,7 @@ header {
     display: flex;
     padding-left: 25%;
     padding-right: 25%;
+    padding-bottom: 40px;
 }
 
 nav{
