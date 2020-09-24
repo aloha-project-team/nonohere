@@ -15,7 +15,7 @@
 {% endblock %}
 {% block content %}
 <div>
-    <div>
+    <div class='info'>
         <h2>{{store.name}}</h2>
         <a href="{{store.naver_link}}"> 바로가기</a>
         <br>
@@ -24,7 +24,7 @@
         주소 : {{store.address}} <br>
         운영시간 : {{store.operation}} <br>
     </div>
-    <div id='review'>
+    <div class='info'>
         <h2>최근 리뷰</h2>
         {% for review in reviews %}
         <div>
@@ -33,6 +33,34 @@
         </div>
         {% endfor %}
     </div>
+
+    <div>
+        <table id="data">
+            <h2>이용자수 예상</h2>
+            <thead>
+                <tr>
+                    <td></td>
+                    <th>-5일</th>
+                    <th>-4일</th>
+                    <th>-3일</th>
+                    <th>-2일</th>
+                    <th>-1일</th>
+                    <th>오늘</th>
+                    <th>+1일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>방문자수</th>
+                    {% for visit in graph %}
+                    <td>{{visit}}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
     <div>
         <h2>이 장소를 가려는 사람들</h2>
         <div>
@@ -51,32 +79,6 @@
                 </form>
             {% endif %}
         {% endif %}
-    </div>
-    <div>
-        <table id="data">
-            <caption>이용자수 예상</caption>
-            <thead>
-                <tr>
-                    <td></td>
-                    <th>-5일</th>
-                    <th>-4일</th>
-                    <th>-3일</th>
-                    <th>-2일</th>
-                    <th>-1일</th>
-                    <th>0일</th>
-                    <th>+1일</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>방문자수</th>
-                    {% for visit in graph %}
-                    <td>{{visit}}</td>
-                    {% endfor %}
-                </tr>
-            </tbody>
-        </table>
-
     </div>
     
 </div>
