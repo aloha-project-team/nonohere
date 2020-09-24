@@ -22,36 +22,40 @@
      <div class ="option_container">
          <form action="{% url 'home' %}" method="POST" name="option">
              {% csrf_token %}
-             업종별(예시) : 
-             <input type="checkbox" name="category" value="전체"id="전체_cate">
+             <button type="submit">적용</button><br>
+
+             <h3>업종별(예시)</h3>
+             <input type="checkbox" name="category[]" value="전체"id="전체_cate">
              <label for="전체_cate">전체</label>
-             <input type="checkbox" name="category" value="업종1"id="업종1">
+             <input type="checkbox" name="category[]" value="업종1"id="업종1">
              <label for="업종1">업종1</label>
-             <input type="checkbox" name="category" value="업종2"id="업종2">
+             <input type="checkbox" name="category[]" value="업종2"id="업종2">
              <label for="업종2">업종2</label>
-             <input type="checkbox" name="category" value="업종3"id="업종3">
+             <input type="checkbox" name="category[]" value="업종3"id="업종3">
              <label for="업종3">업종3</label>
              <br>
-             지역별(예시) : 
-             <input type="checkbox" name="region" value="전체"id="전체_re">
+             
+             <h3>지역별(예시)</h3>
+             <input type="checkbox" name="region[]" value="전체"id="전체_re">
              <label for="전체_re">전체</label>
-             <input type="checkbox" name="region" value="서울"id="서울">
+             <input type="checkbox" name="region[]" value="서울"id="서울">
              <label for="서울">서울</label>
-             <input type="checkbox" name="region" value="부산"id="부산">
+             <input type="checkbox" name="region[]" value="부산"id="부산">
              <label for="부산">부산</label>
-             <input type="checkbox" name="region" value="광주"id="광주">
+             <input type="checkbox" name="region[]" value="광주"id="광주">
              <label for="광주">광주</label>
-             <input type="checkbox" name="region" value="대구"id="대구">
+             <input type="checkbox" name="region[]" value="대구"id="대구">
              <label for="대구">대구</label>
-             <input type="checkbox" name="region" value="인천"id="인천">
+             <input type="checkbox" name="region[]" value="인천"id="인천">
              <label for="인천">인천</label>
-             <input type="checkbox" name="region" value="울산"id="울산">
+             <input type="checkbox" name="region[]" value="울산"id="울산">
              <label for="울산">울산</label>
-             <input type="checkbox" name="region" value="대구"id="대구">
+             <input type="checkbox" name="region[]" value="대구"id="대구">
              <label for="대구">대구</label>
-             <button type="submit">적용</button>
          </form>
      </div>
+     <!-- 옵션선택부분 끝 -->
+     <!-- 데이터가 보이는 부분 -->
      <div class="stores">
          <div class="here" id="no_div">
              여기안돼!
@@ -88,12 +92,7 @@
              {% endfor %}
          </div>
      </div>
- </div>
-     <script src="/static/js/home.js"></script>
-     <script>
-         document.option.category.value="{{category}}";
-         document.option.region.value="{{region}}";
-     </script>
+     <!-- 데이터가 보이는 부분 끝 -->
  </div>
  {% comment %} 하단 {% endcomment %}
  <div id='bottom'>
@@ -113,4 +112,9 @@
      <br>전자우편주소 : likelion@likelion.org
      <br>Copyright nonohere COMPANY Corp. All rights reserved.
  <div>
+<script src="/static/js/home.js"></script>
+<script>
+    document.option.category.value="{{category}}";
+    document.option.region.value="{{region}}";
+</script>
  {% endblock %}
