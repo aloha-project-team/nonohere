@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import StoreDB, ReviewDB
+from django.db.models import Q
 # Create your views here.
 
 def home(request):
     context={}
-    stores_list =[]
+    region_list =[]
     stores_result = []
 
     stores = StoreDB.objects.all()
@@ -12,39 +13,42 @@ def home(request):
     if request.method == "POST":
         # 지역별 분류
         region = request.POST.getlist('region[]')
-        print(region)
-        # context['region'] = region
+        # print(region)
 
         if ('전체' in region) or (region == []) :
-            store_list = stores
-            print("지역전체")
+            region_list = [stores]
+            context['region'] = "전체"
+            # print("지역전체")
         else :
+            context['region'] = region
             for reg in region:
-                stores_list.append(stores.filter(addcode=reg))
-            print("지역필터링") 
+                region_list.append(stores.filter(addcode=reg))
+            # print("지역필터링") 
 
         # 업종별 분류
         category = request.POST.getlist('category[]')
-        print(category)
-        # context['category'] = category
+        # print(category)
 
         if ('전체' in category) or (category == []) :
             # stores = StoreDB.objects.all()
-            print("카테고리전체")
+            stores_result=region_list
+            context['category'] = "전체"
+            # print("카테고리전체")
         else:
-            for ministore in stores_list:
+            context['category'] = category
+            for ministore in region_list:
                 for cate in category:
                     stores_result.append(ministore.filter(category=cate))
-            print("카테고리필터링")
+            # print("카테고리필터링")
 
-        context['stores'] = stores_result
-        print(stores_result)
+        context['store_list'] = stores_result
+        # print(stores_result)
 
     else:
-        # context['region'] = '전체'
-        # context['category'] = '전체'
-        print("post없음")
-        context['stores'] = stores
+        context['region'] = '전체'
+        context['category'] = '전체'
+        # print("post없음")
+        context['store_list'] = [stores]
     
     return render(request, 'home.html', context)
 
