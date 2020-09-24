@@ -74,7 +74,7 @@
                     <h1>{{ forloop.counter }}</h1>
                 </div>
                 <div>
-                    <img src="" alt="업종별 아이콘" width="80" hight="80">
+                    {% comment %} <img src="" alt="업종별 아이콘" width="80" hight="80"> {% endcomment %}
                     <a href="{% url 'detail' store.pk %}">
                     <h3>
                     {{store.name}}
@@ -104,7 +104,7 @@
                     <h1>{{ forloop.counter }}</h1>
                 </div>
                 <div>
-                    <img src="" alt="업종별 아이콘" width="80" hight="80">
+                    {% comment %} <img src="" alt="업종별 아이콘" width="80" hight="80"> {% endcomment %}
                     <a href="{% url 'detail' store.pk %}">
                     <h3>
                     {{store.name}}
