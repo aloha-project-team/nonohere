@@ -74,36 +74,7 @@
                     <h1>{{ forloop.counter }}</h1>
                 </div>
                 <div>
-                    <img src="" alt="업종별 아이콘" width="80" hight="80">
-                    <a href="{% url 'detail' store.pk %}">
-                    <h3>
-                    {{store.name}}
-                    </h3>
-                    </a>
-                    <div>
-                        별점: {{store.score}} 리뷰수:
-                        <script>
-                            document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
-                        </script> 
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        {% endfor %}
-        {% comment %} <img id='model' src='{% static "img/nonohere_model_white_bg.png" %}' alt='nonohere_model'> {% endcomment %}
-    </div>
-    <div class="here" id="yes_div" style="display: none;">
-        <h2>여긴어때?</h2>
-        <h3>최근 방문자가 적지만 좋은 곳을 추천해요</h3>
-        {% for stores in store_list %}
-            {% for store in stores %}
-            <div class="store">
-                <div class='rank'>
-                    <h3>RANK</h3>
-                    <h1>{{ forloop.counter }}</h1>
-                </div>
-                <div>
-                    <img src="" alt="업종별 아이콘" width="80" hight="80">
+                    {% comment %} <img src="" alt="업종별 아이콘" width="80" hight="80"> {% endcomment %}
                     <a href="{% url 'detail' store.pk %}">
                     <h3>
                     {{store.name}}
@@ -120,6 +91,37 @@
             <br>
             {% endfor %}
         {% endfor %}
+        <img id='model' src='{% static "img/nonohere_model_white_bg.png" %}' alt='nonohere_model'>
+    </div>
+    <div class="here" id="yes_div" style="display: none;">
+        <h2>여긴어때?</h2>
+        <h3>최근 방문자가 적지만 좋은 곳을 추천해요</h3>
+        {% for stores in store_list %}
+            {% for store in stores %}
+            <div class="store">
+                <div class='rank'>
+                    <h3>RANK</h3>
+                    <h1>{{ forloop.counter }}</h1>
+                </div>
+                <div>
+                    {% comment %} <img src="" alt="업종별 아이콘" width="80" hight="80"> {% endcomment %}
+                    <a href="{% url 'detail' store.pk %}">
+                    <h3>
+                    {{store.name}}
+                    </h3>
+                    </a>
+                    <div>
+                        별점: {{store.score}} 리뷰수:
+                        <script>
+                            document.write( {{store.visitors_reviews}} + {{store.blog_reviews}} )
+                        </script> 
+                    </div>
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+        {% endfor %}
+        <img id='model' src='{% static "img/nonohere_model2_white_bg.png" %}' alt='nonohere_model'>
     </div>
 </div>
 <!-- 데이터가 보이는 부분 끝 -->
